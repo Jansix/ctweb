@@ -1,10 +1,11 @@
 import React from 'react'
 import {
-  FaDribbble,
+  FaTelegram,
   FaInstagram,
-  FaLinkedinIn,
+  FaFacebook,
   FaArrowRight,
 } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -22,9 +23,9 @@ const Hero = () => {
                 <div className="h-[4px] w-[100px] bg-primary mt-4"></div>
                 {/* 外鏈icon */}
                 <div className="flex gap-6 mt-24">
-                  <FaDribbble className="text-2xl hover:scale-110 cursor-pointer  duration-200" />
+                  <FaTelegram className="text-2xl hover:scale-110 cursor-pointer  duration-200" />
                   <FaInstagram className="text-2xl hover:scale-110 cursor-pointer duration-200" />
-                  <FaLinkedinIn className="text-2xl hover:scale-110 cursor-pointer duration-200" />
+                  <FaFacebook className="text-2xl hover:scale-110 cursor-pointer duration-200" />
                 </div>
               </div>
               <div className="absolute -right-6 md:-right-32 bottom-0">
@@ -44,10 +45,12 @@ const Hero = () => {
               <p className="text-sm leading-6 opacity-70">
                 Leading brand in global blockchain development
               </p>
-              <button className="text-primary  border-b-2 border-primary text-xl font-bold py-1 flex items-center gap-4 group">
-                Learn more
-                <FaArrowRight className="text-sm group-hover:translate-x-2 transition duration-200" />
-              </button>
+              <Link to="/product">
+                <button className="text-primary  border-b-2 border-primary text-xl font-bold py-1 flex items-center gap-4 group">
+                  Learn more
+                  <FaArrowRight className="text-sm group-hover:translate-x-2 transition duration-200" />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

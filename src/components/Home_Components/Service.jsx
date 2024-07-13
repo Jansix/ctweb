@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Service = () => {
   return (
@@ -20,10 +21,12 @@ const Service = () => {
               Digital Technology offers a customized blockchain development
               service.
             </p>
-            <button className="text-primary  border-b-2 border-primary text-xl font-bold py-1 flex items-center gap-4 group">
-              google.com
-              <FaArrowRight className="text-sm group-hover:translate-x-2 transition duration-200" />
-            </button>
+            <Link to="/Service">
+              <button className="text-primary  border-b-2 border-primary text-xl font-bold py-1 flex items-center gap-4 group mt-2">
+                Welcome to the Service Page.
+                <FaArrowRight className="text-sm group-hover:translate-x-2 transition duration-200" />
+              </button>
+            </Link>
           </section>
           {/* 右側區塊 */}
           <section className="space-y-9">

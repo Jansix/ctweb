@@ -21,16 +21,20 @@ const Product = () => {
     <div className="bg-gray-100 min-h-screen py-10">
       <div className="container mx-auto px-4">
         {/* 橫幅 */}
-        <div className="bg-slate-200 py-6 px-8 flex items-center rounded-lg mb-10">
-          <div className="w-1/2 flex justify-center">
+        <div className="bg-slate-200 py-6 px-8 flex flex-col sm:flex-row items-center rounded-lg mb-10">
+          <div className="sm:w-1/2 sm:flex justify-center mb-2">
             {/* 手機截圖 */}
-            <img src={phoneIMG} alt="Mobile screenshot" className="h-[400px]" />
+            <img
+              src={phoneIMG}
+              alt="Mobile screenshot"
+              className=" h-[300px] sm:h-[400px]"
+            />
           </div>
-          <div className="w-1/2 ml-6">
-            <h2 className="text-3xl font-bold mb-2">
+          <div className="sm:w-1/2 ml-6 ">
+            <h2 className="text-xl font-bold mb-2 sm:text-3xl">
               Control your future wealth with CT Wallet!
             </h2>
-            <p className="text-lg text-gray-700 mb-4">
+            <p className="sm:text-xl text-gray-700 mb-4">
               A secure, convenient, and limitless cryptocurrency wallet.
             </p>
             <button className="bg-primary text-white py-2 px-4 rounded-lg shadow-md hover:bg-primary-dark transition duration-300">
@@ -40,7 +44,7 @@ const Product = () => {
         </div>
         {/* 產品特色區塊 */}
         <div className="container min-h-[550px] flex justify-center items-center py-12 sm:py-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
             {/* 圖片 */}
             <div>
               <img

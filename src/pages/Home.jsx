@@ -5,6 +5,7 @@ import ServiceItems from '@/components/Home_Components/ServiceItems.jsx'
 import Announce from '@/components/Home_Components/Announce.jsx'
 import Testimonial from '@/components/Home_Components/Testimonial.jsx'
 import DownloadBanner from '@/components/Home_Components/DownloadBanner.jsx'
+
 import { GlobalContext } from '../contexts/GlobalContext'
 
 const Home = () => {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowDown } from 'react-icons/fa6'
+import { FaArrowUp } from 'react-icons/fa6'
 
 // All、News分類的切換
 const Tabs = ({ selectedTab, setSelectedTab }) => {
@@ -62,13 +64,22 @@ const Pagination = ({ currentPage, totalPages, setPage }) => {
 
 // 布告欄組件
 const Announce = ({ value = [] }) => {
-  const [announceList, setAnnounceList] = useState([])
+  const [announceList, setAnnounceList] = useState([]) // 布告欄資料
   useEffect(() => {
     setAnnounceList(value)
-  }, [value])
+  }, [value]) // 傳入的布告欄資料變動時重新賦予
   const [selectedTab, setSelectedTab] = useState('all') // 預設是選擇All類別
   const [currentPage, setCurrentPage] = useState(1) // 起始頁數
   const itemsPerPage = 4 //每個頁顯示四筆
+
+  // 布告欄點擊將該筆資料展開
+  const toggleItem = (id) => {
+    setAnnounceList(
+      announceList.map((item) =>
+        item.id === id ? { ...item, open: !item.open } : item
+      )
+    )
+  }
 
   // selectedTab是all就使用全部資料否則將新聞過濾出來賦予給filteredAnnounce渲染列表
   const filteredAnnounce =
@@ -107,19 +118,33 @@ const Announce = ({ value = [] }) => {
             <div className="space-y-8 transition-all duration-500 min-h-[280px]">
               {paginatedAnnounce.map((item) => {
                 return (
-                  <div
-                    key={item.id}
-                    className="flex justify-between items-center border-b-2 border-gray pb-4 group hover:cursor-pointer"
-                  >
-                    <p className="text-sm opacity-75">{item.date}</p>
-                    <p className="text-lg font-bold max-w-[250px]  md:max-w-[300px] truncate xl:max-w-[400px] 2xl:max-w-[550px] flex-grow">
-                      {item.title}
-                    </p>
-                    <FaArrowRight className="text-xl text-primary group-hover:translate-x-2 transition duration-200 " />
+                  <div key={item.id} className="border-b-2 border-gray pb-4">
+                    <div
+                      className="flex justify-between items-center group hover:cursor-pointer"
+                      onClick={() => toggleItem(item.id)}
+                    >
+                      <p className="text-sm opacity-75">{item.date}</p>
+                      <p className="text-lg font-bold max-w-[250px]  sm:max-w-[400px] md:max-w-[300px] truncate xl:max-w-[400px] 2xl:max-w-[550px] flex-grow">
+                        {item.title}
+                      </p>
+                      {/* 箭頭圖標 */}
+                      {item.open != true ? (
+                        <FaArrowDown className="text-xl text-primary group-hover:translate-x-2 transition duration-200" />
+                      ) : (
+                        <FaArrowUp className="text-xl text-primary group-hover:translate-x-2 transition duration-200" />
+                      )}
+                    </div>
+                    {/* 展開的內容 */}
+                    {item.open && (
+                      <div className="text-sm mt-2 text-primary transition-all duration-500 ease-in-out">
+                        {item.content}
+                      </div>
+                    )}
                   </div>
                 )
               })}
             </div>
+
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}

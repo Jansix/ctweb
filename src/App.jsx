@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ScrollToTop from './utils/ScrollToTop' // 引入跳頁時回到頂部的 Hook
 // import components
 import Navbar from '@/components/Global_Components/Navbar'
 import Footer from '@/components/Global_Components/Footer'
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Router>
+        <ScrollToTop />
         <Navbar />
         <div className="flex-1">
           <Routes>
