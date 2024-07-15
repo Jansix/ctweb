@@ -41,7 +41,9 @@ const Service = () => {
             </p>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex gap-3 items-center">
-                <p className="text-6xl text-primary font-bold">1,435,000</p>
+                <p className="text-5xl xl:text-6xl  text-primary font-bold">
+                  1,435,000
+                </p>
                 <p className="font-semibold max-w-[100px]">web developers</p>
               </div>
             </div>
