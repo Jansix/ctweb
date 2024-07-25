@@ -3,6 +3,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import { FaArrowDown } from 'react-icons/fa6'
 import { FaArrowUp } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 // All、News分類的切換
 const Tabs = ({ selectedTab, setSelectedTab }) => {
@@ -106,7 +107,17 @@ const Announce = ({ value = [] }) => {
     <div className="bg-darkGray text-white py-20">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-          <section className="space-y-7 lg:max-w-[380px]">
+          <motion.section
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: 'spring',
+              stiffness: 20,
+              damping: 10,
+              delay: 0.2,
+            }}
+            className="space-y-7 lg:max-w-[380px]"
+          >
             <p className="text-sm opacity-50 tracking-widest font-serif translate-y-3">
               - Announce
             </p>
@@ -114,8 +125,18 @@ const Announce = ({ value = [] }) => {
             <p className="text-sm leading-6 opacity-70">
               Explore our latest features and updates
             </p>
-          </section>
-          <section className="col-span-2 lg:px-20">
+          </motion.section>
+          <motion.section
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              type: 'spring',
+              stiffness: 20,
+              damping: 10,
+              delay: 0.4,
+            }}
+            className="col-span-2 lg:px-20"
+          >
             <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
             <div className="space-y-8 transition-all duration-500 min-h-[280px]">
               {paginatedAnnounce.map((item) => {
@@ -160,7 +181,7 @@ const Announce = ({ value = [] }) => {
               totalPages={totalPages}
               setPage={setCurrentPage}
             />
-          </section>
+          </motion.section>
         </div>
       </div>
     </div>
