@@ -140,6 +140,7 @@ const Announce = ({ value = [] }) => {
             <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
             <div className="space-y-8 transition-all duration-500 min-h-[280px]">
               {paginatedAnnounce.map((item) => {
+                const isContentTruncated = item.content.length > 150
                 return (
                   <div key={item.id} className="border-b-2 border-gray pb-4">
                     <div
@@ -152,23 +153,32 @@ const Announce = ({ value = [] }) => {
                       </p>
                       {/* 箭頭圖標 */}
                       {item.open != true ? (
-                        <FaArrowDown className="text-xl text-primary group-hover:translate-x-2 transition duration-200" />
+                        <FaArrowDown className="text-xl text-primary group-hover:translate-y-2 transition duration-200" />
                       ) : (
-                        <FaArrowUp className="text-xl text-primary group-hover:translate-x-2 transition duration-200" />
+                        <FaArrowUp className="text-xl text-primary group-hover:-translate-y-2 transition duration-200" />
                       )}
                     </div>
                     {/* 展開的內容 */}
                     {item.open && (
                       <div className="text-sm mt-2 text-primary transition-all duration-500 ease-in-out">
-                        {item.content}
-                        <button
-                          className="text-blue-500 ml-2"
-                          onClick={() => {
-                            navigate(`/NewsPage/${item.id}`)
-                          }}
-                        >
-                          ......Learn more
-                        </button>
+                        <div className="line-clamp-3">
+                          {isContentTruncated
+                            ? item.content.slice(0, 150) + '...'
+                            : item.content}
+                        </div>
+                        {/* 只有當內容超過設定長度時顯示 '查看更多' 按鈕 */}
+                        {isContentTruncated && (
+                          <div className="w-full flex justify-end">
+                            <button
+                              className="text-blue-500 ml-2 hover:scale-105"
+                              onClick={() => {
+                                navigate(`/NewsPage/${item.id}`)
+                              }}
+                            >
+                              Learn more
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
