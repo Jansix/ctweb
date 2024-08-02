@@ -144,11 +144,13 @@ const Announce = ({ value = [] }) => {
                 return (
                   <div key={item.id} className="border-b-2 border-gray pb-4">
                     <div
-                      className="flex justify-between items-center group hover:cursor-pointer"
+                      className="flex justify-between items-center group hover:cursor-pointer "
                       onClick={() => toggleItem(item.id)}
                     >
-                      <p className="text-sm opacity-75">{item.date}</p>
-                      <p className="text-lg font-bold max-w-[250px]  sm:max-w-[400px] md:max-w-[300px] truncate xl:max-w-[400px] 2xl:max-w-[550px] flex-grow">
+                      <p className="text-sm opacity-75 w-14 sm:w-auto">
+                        {item.date}
+                      </p>
+                      <p className="text-lg font-bold  max-w-[250px]  sm:max-w-[400px] md:max-w-[300px] truncate xl:max-w-[400px] 2xl:max-w-[550px] flex-grow">
                         {item.title}
                       </p>
                       {/* 箭頭圖標 */}
